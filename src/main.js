@@ -1,6 +1,20 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 
-createApp(App).use(store).use(router).mount('#app')
+// Styles
+import "./css/normalize.css";
+import "./css/style.css";
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
+//server
+import server from "./api/mirage";
+
+createApp(App)
+  .use(store)
+  .use(VueSweetalert2)
+  .use(router)
+  .use(server)
+  .mount("#app");

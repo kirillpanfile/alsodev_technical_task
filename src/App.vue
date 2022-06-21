@@ -1,30 +1,56 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <app-header @login="login" @openCart="openCart"></app-header>
+  <router-view></router-view>
+  <app-footer></app-footer>
+  <auth-modal ref="auth"></auth-modal>
+  <cart-modal ref="cart"></cart-modal>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<script>
+import AppHeader from "./components/AppHeader";
+import AppFooter from "./components/AppFooter";
+import AuthModal from "./components/UI/AuthModal";
+import CartModal from "./components/UI/CartModal";
+export default {
+  name: "App",
+  components: {
+    AppHeader,
+    AppFooter,
+    AuthModal,
+    CartModal,
+  },
+  data() {
+    return {};
+  },
+  beforeMount() {
+    this.$store.dispatch("fetchParteners");
+  },
+  mounted() {
+    this.setUser();
+    window.addEventListener("onbeforeunload");
+  },
+  methods: {
+    login() {
+      this.$refs.auth.open();
+    },
+    openCart() {
+      console.log("1");
+      this.$refs.cart.open();
+    },
+    async setUser() {
+      await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          login: "admin",
+          password: "admin",
+          cart: [],
+        }),
+      });
+    },
+  },
+};
+</script>
+<style></style>
