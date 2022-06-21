@@ -54,14 +54,14 @@ export default {
     ...mapState({
       cart: (state) => state.cart,
     }),
+    ...mapState({
+      cart1: (state) => state.user.cart,
+    }),
     totalCartPrice() {
       return this.cart.reduce((acc, item) => {
         return acc + item.price * item.quantity;
       }, 0);
     },
-  },
-  mounted() {
-    console.log(this.cart);
   },
   methods: {
     open() {
@@ -84,6 +84,10 @@ export default {
       //   this.closeModal();
     },
     submitOrder() {
+      this.$store.dispatch("submitOrder", {
+        user: this.$store.state.user,
+        cart: this.$store.state.cart,
+      });
       this.$store.commit("clearCart");
       this.close();
       this.$router.push("/");

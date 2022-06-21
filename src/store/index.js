@@ -76,9 +76,17 @@ export default createStore({
     },
     async getUsers({ commit }) {
       const users = await fetch("/api/users");
-      console.log(users);
       const usersData = await users.json();
       commit("getUsers", usersData);
+    },
+    async submitOrder({ commit }, order) {
+      await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      });
     },
   },
   modules: {},

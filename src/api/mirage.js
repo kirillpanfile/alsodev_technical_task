@@ -24,6 +24,7 @@ export default {
           Tanuki: Tanuki,
           Parteners: Parteners,
           users: [],
+          orders: [],
         });
       },
       routes() {
@@ -41,11 +42,18 @@ export default {
         this.get("/users", (schema) => schema.db.users);
         this.post("/users", (schema, request) => {
           let user = JSON.parse(request.requestBody);
-          console.log("user", user);
           schema.db.users.insert({
             login: user.login,
             password: user.password,
             cart: user.cart,
+          });
+        });
+        this.post("/orders", (schema, request) => {
+          let order = JSON.parse(request.requestBody);
+          console.log("order", order);
+          schema.db.orders.insert({
+            user: order.user,
+            cart: order.cart,
           });
         });
       },

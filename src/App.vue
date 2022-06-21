@@ -27,14 +27,13 @@ export default {
   },
   mounted() {
     this.setUser();
-    window.addEventListener("onbeforeunload");
+    window.addEventListener("onbeforeunload", () => {});
   },
   methods: {
     login() {
       this.$refs.auth.open();
     },
     openCart() {
-      console.log("1");
       this.$refs.cart.open();
     },
     async setUser() {
@@ -46,7 +45,6 @@ export default {
         body: JSON.stringify({
           login: "admin",
           password: "admin",
-          cart: [],
         }),
       });
     },

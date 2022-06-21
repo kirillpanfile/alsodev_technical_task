@@ -1,29 +1,8 @@
-# alsodev_technical_task
+## Alsodev technical task
 
-## Project setup
+**Steps for setting it up**
 
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-1. Создать проект с помощью Vue CLI - done
-2. Перенести вёрстку двух страниц на vue - done
-3. Разбить на компоненты header, footer done
-4. Вынести в компоненты карточку ресторана и карточку продукта и вывести их циклом - компоненты должны принимать соответствующие параметры и осуществлять переход между страницами. done
-5. Вынести в компонент модальные окна и сделать их кликабельными
+- Clone The project
+- Download packages with `yarn` or `npm install
+- Run the project via `yarn serve` or `npm run serve`
+- login with **login** : _admin_ and **password** : _admin_
