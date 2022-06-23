@@ -54,9 +54,6 @@ export default {
     ...mapState({
       cart: (state) => state.cart,
     }),
-    ...mapState({
-      cart1: (state) => state.user.cart,
-    }),
     totalCartPrice() {
       return this.cart.reduce((acc, item) => {
         return acc + item.price * item.quantity;
