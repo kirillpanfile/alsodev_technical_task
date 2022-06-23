@@ -27,7 +27,6 @@ export default {
   },
   mounted() {
     this.setUser();
-    window.addEventListener("onbeforeunload", () => {});
   },
   methods: {
     login() {
